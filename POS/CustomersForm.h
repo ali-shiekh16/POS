@@ -1,4 +1,10 @@
-
+#pragma once
+#include "Query.h"
+#include "Utils.h"
+#include <string>
+#include <iostream>
+#ifndef CUSTOMERS_FORM
+#define CUSTOMERS_FORM
 
 namespace POS {
 
@@ -12,8 +18,13 @@ namespace POS {
 	/// <summary>
 	/// Summary for CustomersForm
 	/// </summary>
+	/// 
 	public ref class CustomersForm : public System::Windows::Forms::Form
 	{
+
+	private:
+		Query^ query;
+		String^ id = "";
 	public:
 		CustomersForm(void)
 		{
@@ -21,6 +32,22 @@ namespace POS {
 			//
 			//TODO: Add the constructor code here
 			//
+			query = gcnew Query();
+		}
+
+
+		CustomersForm(String^ id, String^ name, String^ email, String^ phone, String^ address)
+		{
+			InitializeComponent();
+			
+			query = gcnew Query();
+
+			txtName->Text = name;
+			txtEmail->Text = email;
+			txtPhone->Text = phone;
+			txtAddress->Text = address;
+
+			this->id = id;
 		}
 
 	protected:
@@ -108,6 +135,7 @@ namespace POS {
 			this->btnSave->Textcolor = System::Drawing::Color::White;
 			this->btnSave->TextFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->btnSave->Click += gcnew System::EventHandler(this, &CustomersForm::btnSave_Click);
 			// 
 			// txtAddress
 			// 
@@ -247,5 +275,24 @@ namespace POS {
 
 		}
 #pragma endregion
-	};
+	private: System::Void btnSave_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (String::IsNullOrEmpty(id))
+		{
+			auto customerId = Convert::ToString(static_cast<int>(Utils::roles::customer));
+			if (query->exec("INSERT INTO Users (name, email, phone, address, roleId) VALUES('" + txtName->Text + "', '" + txtEmail->Text + "', '" + txtPhone->Text + "', '" + txtAddress->Text + "', '" + customerId + "')"))
+				MessageBox::Show("Customer Added!");
+		}
+		else 
+		{
+			if (query->exec("UPDATE Users SET name = '" + txtName->Text + "', email = '" + txtEmail->Text + "', phone = '" + txtPhone->Text + "', address = '" + txtAddress->Text + "' WHERE userId = '" + id + "'"))
+			{
+				MessageBox::Show("Customer Updated!");
+				this->Hide();
+				this->Hide();
+			}
+
+		}
+	}
+};
 }
+#endif

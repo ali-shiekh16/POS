@@ -1,5 +1,7 @@
 #pragma once
 
+#include "CustomersForm.h"
+
 namespace POS {
 
 	using namespace System;
@@ -239,13 +241,16 @@ namespace POS {
 			this->Controls->Add(this->Phone);
 			this->Controls->Add(this->Email);
 			this->Controls->Add(this->Name);
-			//this->Name = gcnew String("SupplierForm");
+			//this->Name = L"SupplierForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Supplier Form";
+			this->Load += gcnew System::EventHandler(this, &SupplierForm::SupplierForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void SupplierForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

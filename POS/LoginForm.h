@@ -1,4 +1,6 @@
+#pragma once
 
+#include "CustomersForm.h"
 
 namespace POS {
 
@@ -190,10 +192,16 @@ namespace POS {
 			this->Name = L"LoginForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Sign in";
+			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		auto form = gcnew CustomersForm();
+		form->Show();
+	}
+};
 }
+

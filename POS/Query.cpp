@@ -17,7 +17,9 @@ DataTable^ Query::fetchData(String^ query)
 {
     sqlConnection->Open();
     auto adapter = gcnew SqlDataAdapter(query, sqlConnection);
+
     auto table = gcnew DataTable();
+
     adapter->Fill(table);
     sqlConnection->Close();
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "SupplierForm.h"
 
 namespace POS {
 
@@ -51,8 +52,8 @@ namespace POS {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->table = (gcnew Bunifu::Framework::UI::BunifuCustomDataGrid());
 			this->txtSearch = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->table))->BeginInit();
@@ -60,21 +61,21 @@ namespace POS {
 			// 
 			// table
 			// 
-			dataGridViewCellStyle3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)),
 				static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)));
-			this->table->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+			this->table->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->table->BackgroundColor = System::Drawing::Color::Gainsboro;
 			this->table->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->table->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::None;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::SeaGreen;
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::SeaGreen;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::SeaGreen;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->table->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::SeaGreen;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->table->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->table->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->table->DoubleBuffered = true;
 			this->table->EnableHeadersVisualStyles = false;
@@ -114,10 +115,15 @@ namespace POS {
 			this->Name = L"SupplierListForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Suppliers List";
+			this->Load += gcnew System::EventHandler(this, &SupplierListForm::SupplierListForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->table))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	};
+	private: System::Void SupplierListForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		auto form = gcnew SupplierForm();
+		form->Show();
+	}
+};
 }

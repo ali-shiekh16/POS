@@ -1,4 +1,6 @@
 #pragma once
+#ifndef QUERY
+#define QUERY
 
 ref class Query
 {
@@ -13,3 +15,4 @@ private:
 	
 };
 
+#endif
