@@ -288,7 +288,6 @@ namespace POS {
 			{
 				MessageBox::Show("Customer Updated!");
 				this->Hide();
-				this->Hide();
 			}
 
 		}

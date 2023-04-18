@@ -5,6 +5,8 @@
 #include "CustomersListForm.h"
 #include "SupplierForm.h"
 #include "SupplierListForm.h"
+#include "ProductsForm.h"
+#include "ProductsListForm.h"
 
 namespace POS {
 
@@ -50,7 +52,9 @@ namespace POS {
 	private: System::Windows::Forms::Button^ btnCustomerList;
 	private: System::Windows::Forms::Button^ btnSupplier;
 	private: System::Windows::Forms::Button^ btnSupplierList;
-	private: System::Windows::Forms::Button^ button5;
+	private: System::Windows::Forms::Button^ btnProducts;
+	private: System::Windows::Forms::Button^ btnProductList;
+
 
 	protected:
 
@@ -71,7 +75,8 @@ namespace POS {
 			this->btnCustomerList = (gcnew System::Windows::Forms::Button());
 			this->btnSupplier = (gcnew System::Windows::Forms::Button());
 			this->btnSupplierList = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->btnProducts = (gcnew System::Windows::Forms::Button());
+			this->btnProductList = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// btnCustomer
@@ -114,21 +119,33 @@ namespace POS {
 			this->btnSupplierList->UseVisualStyleBackColor = true;
 			this->btnSupplierList->Click += gcnew System::EventHandler(this, &MainForm::btnSupplierList_Click);
 			// 
-			// button5
+			// btnProducts
 			// 
-			this->button5->Location = System::Drawing::Point(69, 167);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(75, 23);
-			this->button5->TabIndex = 4;
-			this->button5->Text = L"button5";
-			this->button5->UseVisualStyleBackColor = true;
+			this->btnProducts->Location = System::Drawing::Point(69, 167);
+			this->btnProducts->Name = L"btnProducts";
+			this->btnProducts->Size = System::Drawing::Size(75, 23);
+			this->btnProducts->TabIndex = 4;
+			this->btnProducts->Text = L"Products";
+			this->btnProducts->UseVisualStyleBackColor = true;
+			this->btnProducts->Click += gcnew System::EventHandler(this, &MainForm::btnProducts_Click);
+			// 
+			// btnProductList
+			// 
+			this->btnProductList->Location = System::Drawing::Point(120, 211);
+			this->btnProductList->Name = L"btnProductList";
+			this->btnProductList->Size = System::Drawing::Size(75, 23);
+			this->btnProductList->TabIndex = 5;
+			this->btnProductList->Text = L"ProductList";
+			this->btnProductList->UseVisualStyleBackColor = true;
+			this->btnProductList->Click += gcnew System::EventHandler(this, &MainForm::btnProductList_Click);
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
-			this->Controls->Add(this->button5);
+			this->Controls->Add(this->btnProductList);
+			this->Controls->Add(this->btnProducts);
 			this->Controls->Add(this->btnSupplierList);
 			this->Controls->Add(this->btnSupplier);
 			this->Controls->Add(this->btnCustomerList);
@@ -158,5 +175,13 @@ namespace POS {
 		auto form = gcnew SupplierListForm();
 		form->Show();
 	}
+private: System::Void btnProducts_Click(System::Object^ sender, System::EventArgs^ e) {
+	auto form = gcnew ProductsForm();
+	form->Show();
+}
+private: System::Void btnProductList_Click(System::Object^ sender, System::EventArgs^ e) {
+	auto form = gcnew ProductsListForm();
+	form->Show();
+}
 };
 }

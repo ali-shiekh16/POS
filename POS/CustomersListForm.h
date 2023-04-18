@@ -1,6 +1,7 @@
 #pragma once
 #ifndef CUSTOMERS_LIST_FORM
 #define CUSTOMERS_LIST_FORM
+
 #include "Query.h"
 #include "Utils.h"
 #include "CustomersForm.h"
@@ -20,12 +21,12 @@ namespace POS {
 	
 	public ref class CustomersListForm : public System::Windows::Forms::Form
 	{
-	private: 
-		Query^ query;
+	private:
 	private: Bunifu::Framework::UI::BunifuFlatButton^ btnEdit;
 	private: Bunifu::Framework::UI::BunifuFlatButton^ btnDelete;
 	private: Bunifu::Framework::UI::BunifuFlatButton^ btnAdd;
 
+		   Query^ query;
 		   bool isUpdated = false;
 
 	public:
@@ -34,7 +35,7 @@ namespace POS {
 			InitializeComponent();
 			query = gcnew Query();
 			populateTable();
-			
+
 		}
 
 	protected:
@@ -56,6 +57,19 @@ namespace POS {
 			table->DataSource = datatable;
 			table->ClearSelection();
 			isUpdated = false;
+			disableButtons();
+		}
+
+		void enableButtons() 
+		{
+			btnEdit->Enabled = true;
+			btnDelete->Enabled = true;
+		}
+
+		void disableButtons() 
+		{
+			btnEdit->Enabled = false;
+			btnDelete->Enabled = false;
 		}
 
 	private: Bunifu::Framework::UI::BunifuCustomLabel^ Search;
@@ -301,17 +315,17 @@ namespace POS {
 
 		}
 #pragma endregion
+
 	private: System::Void CustomersListForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		btnEdit->Enabled = false;
+		btnDelete->Enabled = false;
 	}
 
 
 
 private: System::Void table_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (!String::IsNullOrEmpty(Convert::ToString(table->CurrentRow->Cells[0]->Value)) && !isUpdated)
-	{
-		btnEdit->Enabled = true;
-		btnDelete->Enabled = true;
-	}
+		enableButtons();
 }
 
 private: System::Void txtSearch_OnValueChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -348,13 +362,13 @@ private: System::Void btnEdit_Click(System::Object^ sender, System::EventArgs^ e
 }
 	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
 		auto userId = Convert::ToString(table->CurrentRow->Cells[0]->Value);
-	if (!String::IsNullOrEmpty(userId) && !isUpdated)
-		if (MessageBox::Show("Are you sure you want to delete?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == Windows::Forms::DialogResult::Yes)
-			if (query->exec("DELETE FROM Users WHERE userId = " + userId))
-			{
-				MessageBox::Show("Customer deleted!");
-				populateTable();
-			}
+		if (!String::IsNullOrEmpty(userId) && !isUpdated)
+			if (MessageBox::Show("Are you sure you want to delete?", "Confirmation", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == Windows::Forms::DialogResult::Yes)
+				if (query->exec("DELETE FROM Users WHERE userId = " + userId))
+				{
+					MessageBox::Show("Customer deleted!");
+					populateTable();
+				}
 }
 private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 	auto form = gcnew CustomersForm();

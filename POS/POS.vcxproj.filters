@@ -48,6 +48,9 @@
     <ClCompile Include="CustomersFormDelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ProductsForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProductsForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
