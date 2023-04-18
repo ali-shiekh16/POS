@@ -34,7 +34,7 @@ namespace POS {
 	private:
 		void populateTable()
 		{
-			auto datatable = query->fetchData("SELECT NULL AS ID, NULL AS[Name], NULL AS[Stock], NULL AS[State] FROM Products UNION SELECT productId, [name], stock, state FROM Products");
+			auto datatable = query->fetchData("SELECT NULL AS ID, NULL AS [Name], NULL AS 'Unit Price', NULL AS [Stock], NULL AS[State] FROM Products UNION SELECT productId, [name], unitPrice, stock, state FROM Products");
 			table->DataSource = datatable;
 			table->ClearSelection();
 			isUpdated = false;
@@ -324,11 +324,12 @@ private: System::Void btnEdit_Click(System::Object^ sender, System::EventArgs^ e
 	{
 		auto id = Convert::ToString(table->CurrentRow->Cells[0]->Value);
 		auto name = Convert::ToString(table->CurrentRow->Cells[1]->Value);
-		auto stock = Convert::ToString(table->CurrentRow->Cells[2]->Value);
-		auto state = Convert::ToBoolean(table->CurrentRow->Cells[3]->Value);
+		auto unitPrice = Convert::ToString(table->CurrentRow->Cells[2]->Value);
+		auto stock = Convert::ToString(table->CurrentRow->Cells[3]->Value);
+		auto state = Convert::ToBoolean(table->CurrentRow->Cells[4]->Value);
 		auto barcode = query->fetchData("SELECT barcode FROM Products WHERE productId = '"+ id +"'")->Rows[0]->ItemArray[0]->ToString();
 		
-		auto form = gcnew ProductsForm(id, name, stock, state, barcode);
+		auto form = gcnew ProductsForm(id, name, stock, state, barcode, unitPrice);
 		form->Show();
 
 		isUpdated = true;

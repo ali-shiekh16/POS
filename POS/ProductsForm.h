@@ -22,7 +22,9 @@ namespace POS {
 	{
 	private:
 		Query^ query;
-		String^ id = "";
+	private: Bunifu::Framework::UI::BunifuCustomLabel^ bunifuCustomLabel1;
+	private: Bunifu::Framework::UI::BunifuMetroTextbox^ txtPrice;
+		   String^ id = "";
 	public:
 		ProductsForm(void)
 		{
@@ -30,7 +32,7 @@ namespace POS {
 			query = gcnew Query();
 		}
 
-		ProductsForm(String^ id, String^ name, String^ stock, bool state, String^ barcode)
+		ProductsForm(String^ id, String^ name, String^ stock, bool state, String^ barcode, String^ unitPrice)
 		{
 			InitializeComponent();
 			query = gcnew Query();
@@ -40,6 +42,7 @@ namespace POS {
 			txtStock->Text = stock;
 			switchState->Value = state;
 			txtCode->Text = barcode;
+			txtPrice->Text = unitPrice;
 		}
 
 	protected:
@@ -89,6 +92,8 @@ namespace POS {
 			this->txtStock = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			this->bunifuCustomLabel2 = (gcnew Bunifu::Framework::UI::BunifuCustomLabel());
 			this->txtName = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
+			this->bunifuCustomLabel1 = (gcnew Bunifu::Framework::UI::BunifuCustomLabel());
+			this->txtPrice = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			this->SuspendLayout();
 			// 
 			// btnSave
@@ -115,7 +120,7 @@ namespace POS {
 			this->btnSave->IconVisible = false;
 			this->btnSave->IconZoom = 90;
 			this->btnSave->IsTab = false;
-			this->btnSave->Location = System::Drawing::Point(142, 314);
+			this->btnSave->Location = System::Drawing::Point(142, 357);
 			this->btnSave->Name = L"btnSave";
 			this->btnSave->Normalcolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
 				static_cast<System::Int32>(static_cast<System::Byte>(87)));
@@ -171,7 +176,7 @@ namespace POS {
 			this->switchState->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"switchState.BackgroundImage")));
 			this->switchState->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->switchState->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->switchState->Location = System::Drawing::Point(188, 252);
+			this->switchState->Location = System::Drawing::Point(188, 313);
 			this->switchState->Name = L"switchState";
 			this->switchState->OffColor = System::Drawing::Color::Gray;
 			this->switchState->OnColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(71)), static_cast<System::Int32>(static_cast<System::Byte>(202)),
@@ -185,7 +190,7 @@ namespace POS {
 			this->bunifuCustomLabel5->AutoSize = true;
 			this->bunifuCustomLabel5->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->bunifuCustomLabel5->Location = System::Drawing::Point(140, 252);
+			this->bunifuCustomLabel5->Location = System::Drawing::Point(140, 313);
 			this->bunifuCustomLabel5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->bunifuCustomLabel5->Name = L"bunifuCustomLabel5";
 			this->bunifuCustomLabel5->Size = System::Drawing::Size(43, 19);
@@ -258,11 +263,46 @@ namespace POS {
 			this->txtName->Text = L"Type Here";
 			this->txtName->TextAlign = System::Windows::Forms::HorizontalAlignment::Left;
 			// 
+			// bunifuCustomLabel1
+			// 
+			this->bunifuCustomLabel1->AutoSize = true;
+			this->bunifuCustomLabel1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bunifuCustomLabel1->Location = System::Drawing::Point(134, 248);
+			this->bunifuCustomLabel1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->bunifuCustomLabel1->Name = L"bunifuCustomLabel1";
+			this->bunifuCustomLabel1->Size = System::Drawing::Size(43, 19);
+			this->bunifuCustomLabel1->TabIndex = 31;
+			this->bunifuCustomLabel1->Text = L"Price";
+			// 
+			// txtPrice
+			// 
+			this->txtPrice->BorderColorFocused = System::Drawing::Color::Blue;
+			this->txtPrice->BorderColorIdle = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->txtPrice->BorderColorMouseHover = System::Drawing::Color::Blue;
+			this->txtPrice->BorderThickness = 3;
+			this->txtPrice->Cursor = System::Windows::Forms::Cursors::IBeam;
+			this->txtPrice->Font = (gcnew System::Drawing::Font(L"Century Gothic", 9.75F));
+			this->txtPrice->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->txtPrice->isPassword = false;
+			this->txtPrice->Location = System::Drawing::Point(138, 270);
+			this->txtPrice->Margin = System::Windows::Forms::Padding(4);
+			this->txtPrice->Name = L"txtPrice";
+			this->txtPrice->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->txtPrice->Size = System::Drawing::Size(348, 29);
+			this->txtPrice->TabIndex = 30;
+			this->txtPrice->Text = L"Type Here";
+			this->txtPrice->TextAlign = System::Windows::Forms::HorizontalAlignment::Left;
+			// 
 			// ProductsForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(585, 425);
+			this->Controls->Add(this->bunifuCustomLabel1);
+			this->Controls->Add(this->txtPrice);
 			this->Controls->Add(this->btnSave);
 			this->Controls->Add(this->bunifuCustomLabel6);
 			this->Controls->Add(this->txtCode);
@@ -284,11 +324,11 @@ namespace POS {
 		if (String::IsNullOrEmpty(id))
 		{
 			auto customerId = Convert::ToString(static_cast<int>(Utils::roles::supplier));
-			if (query->exec("INSERT INTO Products (name, stock, barcode, state) VALUES('"+ txtName->Text +"', '"+ txtStock->Text +"', '"+ txtCode->Text +"', '"+ Convert::ToInt16(switchState->Value) + "')"))
+			if (query->exec("INSERT INTO Products (name, stock, barcode, unitPrice, state) VALUES('"+ txtName->Text +"', '"+ txtStock->Text +"', '"+ txtCode->Text +"', '" + txtPrice->Text + "', '"+ Convert::ToInt16(switchState->Value) + "')"))
 				MessageBox::Show("Product Added!");
 		}
 		else
-			if (query->exec("UPDATE Products SET [name] = '"+ txtName->Text +"', stock = '"+ txtStock->Text +"', barcode = '"+ txtCode->Text +"', state = '" + Convert::ToInt16(switchState->Value) + "'  WHERE productId = '"+ id +"'"))
+			if (query->exec("UPDATE Products SET [name] = '"+ txtName->Text +"', stock = '"+ txtStock->Text +"', barcode = '"+ txtCode->Text +"', unitPrice = '" + txtPrice->Text + "', state = '" + Convert::ToInt16(switchState->Value) + "'  WHERE productId = '"+ id +"'"))
 			{
 				MessageBox::Show("Product Updated!");
 				this->Hide();
