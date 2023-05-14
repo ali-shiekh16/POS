@@ -3,6 +3,7 @@
 using namespace System;
 using namespace System::Data;
 using namespace System::Data::SqlClient;
+using namespace System::Windows::Forms;
 
 bool Query::exec(String^ query)
 {
@@ -15,19 +16,32 @@ bool Query::exec(String^ query)
 
 DataTable^ Query::fetchData(String^ query)
 {
-    sqlConnection->Open();
-    auto adapter = gcnew SqlDataAdapter(query, sqlConnection);
+    DataTable^ table;
 
-    auto table = gcnew DataTable();
+    try 
+    {
+        sqlConnection->Open();
+        auto adapter = gcnew SqlDataAdapter(query, sqlConnection);
 
-    adapter->Fill(table);
-    sqlConnection->Close();
+        table = gcnew DataTable();
+
+        adapter->Fill(table);
+    }
+    catch (Exception^ ex)
+    {
+        MessageBox::Show(ex->Message);
+    }
+    finally 
+    {
+        sqlConnection->Close();
+    }
 
     return table;
 }
 
 
-Query::Query() {
+Query::Query() 
+{
     sqlConnection = gcnew SqlClient::SqlConnection(Query::connectionString);
 }
 

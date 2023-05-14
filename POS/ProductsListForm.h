@@ -301,6 +301,7 @@ namespace POS {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Products List";
 			this->Activated += gcnew System::EventHandler(this, &ProductsListForm::ProductsListForm_Activated);
+			this->Load += gcnew System::EventHandler(this, &ProductsListForm::ProductsListForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->table))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -349,6 +350,8 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 private: System::Void table_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
 	if (!String::IsNullOrEmpty(Convert::ToString(table->CurrentRow->Cells[0]->Value)) && !isUpdated)
 		enableButtons();
+}
+private: System::Void ProductsListForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

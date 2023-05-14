@@ -24,7 +24,8 @@ namespace POS {
 
 	private:
 		Query^ query;
-		String^ id = "";
+	private: Bunifu::Framework::UI::BunifuFlatButton^ btnSave;
+		   String^ id = "";
 	public:
 		CustomersForm(void)
 		{
@@ -61,7 +62,7 @@ namespace POS {
 				delete components;
 			}
 		}
-	private: Bunifu::Framework::UI::BunifuFlatButton^ btnSave;
+
 	protected:
 	private: Bunifu::Framework::UI::BunifuMetroTextbox^ txtAddress;
 	private: Bunifu::Framework::UI::BunifuMetroTextbox^ txtPhone;
@@ -86,7 +87,6 @@ namespace POS {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CustomersForm::typeid));
-			this->btnSave = (gcnew Bunifu::Framework::UI::BunifuFlatButton());
 			this->txtAddress = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			this->txtPhone = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			this->txtEmail = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
@@ -95,47 +95,8 @@ namespace POS {
 			this->Email = (gcnew Bunifu::Framework::UI::BunifuCustomLabel());
 			this->txtName = (gcnew Bunifu::Framework::UI::BunifuMetroTextbox());
 			this->Name = (gcnew Bunifu::Framework::UI::BunifuCustomLabel());
+			this->btnSave = (gcnew Bunifu::Framework::UI::BunifuFlatButton());
 			this->SuspendLayout();
-			// 
-			// btnSave
-			// 
-			this->btnSave->Activecolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
-				static_cast<System::Int32>(static_cast<System::Byte>(87)));
-			this->btnSave->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
-				static_cast<System::Int32>(static_cast<System::Byte>(87)));
-			this->btnSave->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->btnSave->BorderRadius = 0;
-			this->btnSave->ButtonText = L"Save";
-			this->btnSave->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->btnSave->DisabledColor = System::Drawing::Color::Gray;
-			this->btnSave->Iconcolor = System::Drawing::Color::Transparent;
-			this->btnSave->Iconimage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnSave.Iconimage")));
-			this->btnSave->Iconimage_right = nullptr;
-			this->btnSave->Iconimage_right_Selected = nullptr;
-			this->btnSave->Iconimage_Selected = nullptr;
-			this->btnSave->IconMarginLeft = 0;
-			this->btnSave->IconMarginRight = 0;
-			this->btnSave->IconRightVisible = true;
-			this->btnSave->IconRightZoom = 0;
-			this->btnSave->IconVisible = false;
-			this->btnSave->IconZoom = 90;
-			this->btnSave->IsTab = false;
-			this->btnSave->Location = System::Drawing::Point(223, 359);
-			this->btnSave->Name = L"btnSave";
-			this->btnSave->Normalcolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
-				static_cast<System::Int32>(static_cast<System::Byte>(87)));
-			this->btnSave->OnHovercolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(129)),
-				static_cast<System::Int32>(static_cast<System::Byte>(77)));
-			this->btnSave->OnHoverTextColor = System::Drawing::Color::White;
-			this->btnSave->selected = false;
-			this->btnSave->Size = System::Drawing::Size(304, 48);
-			this->btnSave->TabIndex = 21;
-			this->btnSave->Text = L"Save";
-			this->btnSave->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			this->btnSave->Textcolor = System::Drawing::Color::White;
-			this->btnSave->TextFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->btnSave->Click += gcnew System::EventHandler(this, &CustomersForm::btnSave_Click);
 			// 
 			// txtAddress
 			// 
@@ -252,6 +213,46 @@ namespace POS {
 			this->Name->Size = System::Drawing::Size(49, 20);
 			this->Name->TabIndex = 13;
 			this->Name->Text = L"Name";
+			// 
+			// btnSave
+			// 
+			this->btnSave->Activecolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
+			this->btnSave->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
+			this->btnSave->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->btnSave->BorderRadius = 0;
+			this->btnSave->ButtonText = L"Save";
+			this->btnSave->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnSave->DisabledColor = System::Drawing::Color::Gray;
+			this->btnSave->Iconcolor = System::Drawing::Color::Transparent;
+			this->btnSave->Iconimage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnSave.Iconimage")));
+			this->btnSave->Iconimage_right = nullptr;
+			this->btnSave->Iconimage_right_Selected = nullptr;
+			this->btnSave->Iconimage_Selected = nullptr;
+			this->btnSave->IconMarginLeft = 0;
+			this->btnSave->IconMarginRight = 0;
+			this->btnSave->IconRightVisible = true;
+			this->btnSave->IconRightZoom = 0;
+			this->btnSave->IconVisible = false;
+			this->btnSave->IconZoom = 90;
+			this->btnSave->IsTab = false;
+			this->btnSave->Location = System::Drawing::Point(223, 359);
+			this->btnSave->Name = L"btnSave";
+			this->btnSave->Normalcolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(46)), static_cast<System::Int32>(static_cast<System::Byte>(139)),
+				static_cast<System::Int32>(static_cast<System::Byte>(87)));
+			this->btnSave->OnHovercolor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(36)), static_cast<System::Int32>(static_cast<System::Byte>(129)),
+				static_cast<System::Int32>(static_cast<System::Byte>(77)));
+			this->btnSave->OnHoverTextColor = System::Drawing::Color::White;
+			this->btnSave->selected = false;
+			this->btnSave->Size = System::Drawing::Size(304, 48);
+			this->btnSave->TabIndex = 21;
+			this->btnSave->Text = L"Save";
+			this->btnSave->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->btnSave->Textcolor = System::Drawing::Color::White;
+			this->btnSave->TextFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnSave->Click += gcnew System::EventHandler(this, &CustomersForm::btnSave_Click);
 			// 
 			// CustomersForm
 			// 

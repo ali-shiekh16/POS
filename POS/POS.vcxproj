@@ -123,6 +123,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +133,14 @@
     <ClCompile Include="CustomersListForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="ProductInfo.cpp" />
     <ClCompile Include="ProductsForm.cpp" />
     <ClCompile Include="ProductsListForm.cpp" />
+    <ClCompile Include="PurchaseListForm.cpp" />
+    <ClCompile Include="PurchasesForm.cpp" />
     <ClCompile Include="Query.cpp" />
+    <ClCompile Include="SalesListForm.cpp" />
+    <ClCompile Include="SellForm.cpp" />
     <ClCompile Include="SupplierForm.cpp" />
     <ClCompile Include="SupplierListForm.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -153,13 +159,26 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ProductInfo.h" />
     <ClInclude Include="ProductsForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProductsListForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="PurchaseListForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PurchasesForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Query.h" />
+    <ClInclude Include="SalesListForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="SellForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SupplierForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -187,12 +206,27 @@
     <EmbeddedResource Include="ProductsListForm.resx">
       <DependentUpon>ProductsListForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseListForm.resx">
+      <DependentUpon>PurchaseListForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasesForm.resx">
+      <DependentUpon>PurchasesForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesListForm.resx">
+      <DependentUpon>SalesListForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellForm.resx">
+      <DependentUpon>SellForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SupplierForm.resx">
       <DependentUpon>SupplierForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SupplierListForm.resx">
       <DependentUpon>SupplierListForm.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
